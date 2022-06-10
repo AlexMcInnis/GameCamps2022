@@ -31,15 +31,7 @@ public class PlayerMovement : MonoBehaviour
         }
         rb.velocity = vel;
 
-        var pos = transform.position;
-        if(pos.y > yBound)
-        {
-            pos.y = yBound;
-        }
-        else if(pos.y < -yBound)
-        {
-           pos.y = -yBound;
-        }
-        transform.position = pos;
+        
+     
     }
 }
