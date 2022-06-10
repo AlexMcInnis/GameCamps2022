@@ -799,7 +799,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
 --- !u!114 &1582131199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,14 +809,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1582131194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0753ad86f37bde34891d4083dad759f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 2139963c1c56c6c4faa87dcd643019be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  resetSpeed: 3
-  rb: {fileID: 0}
-  ball: {fileID: 756989540}
-  ballRB: {fileID: 0}
+  ball: {fileID: 756989543}
 --- !u!1 &1730129153
 GameObject:
   m_ObjectHideFlags: 0
