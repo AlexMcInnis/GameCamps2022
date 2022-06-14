@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -10,18 +11,57 @@ public class GameManager : MonoBehaviour
     private int computerScore;
     public TMP_Text player;
     public TMP_Text computer;
+    public TMP_Text gameOverText;
+    public PlayerMovement pPaddle;
+    public AIMovement cPaddle;
+    private bool gameover = false;
 
     public void PlayerScores()
     {
         playerScore++;
         player.text = playerScore.ToString();
-        this.ball.ResetPosition();
+        ResetField();
     }
 
     public void ComputerScores()
     {
         computerScore++;
         computer.text = computerScore.ToString();
-        this.ball.ResetPosition();
+        ResetField();
+    }
+
+    private void ResetField()
+    {
+        if(computerScore == 5 || playerScore == 5)
+        {
+            gameover = true;
+            gameOverText.gameObject.SetActive(true);
+            ball.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else
+        {
+            this.ball.ResetPosition();
+            pPaddle.ResetPosition();
+            cPaddle.ResetPosition();
+            ball.AddStartingForce();
+        }
+
+    }
+    private void ResetGame()
+    {
+        playerScore = 0;
+        computerScore = 0;
+        ResetField();
+    }
+
+    private void Update()
+    {
+        if (gameover)
+        {
+            if (Input.GetKey(KeyCode.R))
+            {
+                SceneManager.LoadScene("Pong");
+            }
+        }
     }
 }

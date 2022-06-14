@@ -36,4 +36,9 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(dir * speed);
         }
     }
+    public void ResetPosition()
+    {
+        rb.position = new Vector2(rb.position.x, 0.0f);
+        rb.velocity = Vector2.zero;
+    }
 }
