@@ -313,7 +313,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.31132078, g: 0.28390887, b: 0.28390887, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -373,8 +373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
---- !u!58 &756989545
-CircleCollider2D:
+--- !u!61 &756989545
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -387,8 +387,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &770025140
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,8 +584,9 @@ GameObject:
   - component: {fileID: 1184798831}
   - component: {fileID: 1184798830}
   - component: {fileID: 1184798829}
+  - component: {fileID: 1184798832}
   m_Layer: 0
-  m_Name: Paddle1
+  m_Name: PlayerPaddle
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -708,7 +719,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  yBound: 2.25
+--- !u!114 &1184798832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184798826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7314aa7f58af48a439566fc0542505ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 22
 --- !u!1 &1515817108
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,6 +742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1515817110}
   - component: {fileID: 1515817109}
+  - component: {fileID: 1515817111}
   m_Layer: 0
   m_Name: TopWall
   m_TagString: Untagged
@@ -767,6 +791,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1515817111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515817108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7314aa7f58af48a439566fc0542505ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 5
 --- !u!1 &1582131194
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,8 +817,9 @@ GameObject:
   - component: {fileID: 1582131199}
   - component: {fileID: 1582131198}
   - component: {fileID: 1582131197}
+  - component: {fileID: 1582131200}
   m_Layer: 0
-  m_Name: Paddle2
+  m_Name: AIPaddle
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,6 +953,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   ball: {fileID: 756989543}
+--- !u!114 &1582131200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582131194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7314aa7f58af48a439566fc0542505ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 22
 --- !u!1 &1730129153
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1730129155}
   - component: {fileID: 1730129154}
+  - component: {fileID: 1730129156}
   m_Layer: 0
   m_Name: BottomWall
   m_TagString: Untagged
@@ -973,3 +1025,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1730129156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730129153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7314aa7f58af48a439566fc0542505ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 5

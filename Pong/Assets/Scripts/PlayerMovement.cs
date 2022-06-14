@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10f;
-    public float yBound = 2.25f;
     private Rigidbody2D rb;
+    private Vector2 dir;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,24 +14,26 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        var vel = rb.velocity;
-        if(Input.GetAxis("Vertical") > 0f)
+       if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            vel.y = speed;
+            dir = Vector2.up;
         }
-        else if(Input.GetAxis("Vertical") < 0f)
+       else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            vel.y = -speed;
+            dir = Vector2.down;
         }
         else
         {
-            vel.y = 0;
+            dir = Vector2.zero;
         }
-        rb.velocity = vel;
-
-        
-     
+    }
+    private void FixedUpdate()
+    {
+        if(dir.sqrMagnitude != 0)
+        {
+            rb.AddForce(dir * speed);
+        }
     }
 }
