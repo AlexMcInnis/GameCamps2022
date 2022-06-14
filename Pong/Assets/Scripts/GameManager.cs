@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour
     public PlayerMovement pPaddle;
     public AIMovement cPaddle;
     private bool gameover = false;
+    public AudioSource music;
+
+    private void Start()
+    {
+
+    }
 
     public void PlayerScores()
     {
@@ -37,6 +43,7 @@ public class GameManager : MonoBehaviour
             gameover = true;
             gameOverText.gameObject.SetActive(true);
             ball.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            music.Stop();
         }
         else
         {
