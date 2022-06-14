@@ -15,20 +15,19 @@ public class BallMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        AddStartingForce();
+        ResetPosition();
     }
     private void AddStartingForce()
     {
         float x = Random.value < 0.5f ? -1f : 1f;
-        float y = Random.value < 0.5f ? 0f : 0f;
+        float y = Random.value < 0.5f ? Random.Range(-1f,-0.5f) :Random.Range(0.5f, 1f);
         Vector2 dir = new Vector2(x, y);
         rb.AddForce(dir * speed);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddForce(Vector2 force)
     {
-        
+        rb.AddForce(force);
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -40,5 +39,13 @@ public class BallMovement : MonoBehaviour
             vel.y = (rb.velocity.y / 2) + (coll.collider.attachedRigidbody.velocity.y / 3);
             rb.velocity = vel;
         }
+    }
+
+    public void ResetPosition()
+    {
+        rb.position = Vector3.zero;
+        rb.velocity = Vector3.zero;
+
+        AddStartingForce();
     }
 }
